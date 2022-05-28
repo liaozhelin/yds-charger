@@ -12,7 +12,7 @@
 
 **仓库目录说明**
 
-1. Hardware：【上层板/下层板/前面板/后面板 】硬件gerber文件/原理图源文件/原理图PDF文件/坐标文件/BOM文件
+1. Hardware：【上层板/下层板/前面板/后面板 】gerber文件/原理图源文件/原理图PDF文件/坐标文件/BOM文件
 2. Firmware：【 ESP32C3FN4 的固件以及工具 】固件/驱动/下载烧录软件
 3. Software： 【 软件工程源码 】esp-idf-4.4 版本开发环境
 4. Structure： 【 整机结构文件 】包含电路板及外壳装配文件，软件版本Soliworks2022
