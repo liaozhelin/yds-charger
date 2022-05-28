@@ -1,0 +1,35 @@
+menu "U8G2 Component Config"
+    choice U8G2_INIT_I2C_CONTROL
+        prompt "Select ENABLE I2C interface (When there are not only one drivers on lines)"
+        default LIS3DH_INTERFACE_I2C
+
+        config U8G2_INIT_I2C_ENABLE
+            bool "ENABLE"
+        config U8G2_INIT_I2C_DISABLE
+            bool "DISABLE"
+    endchoice
+
+    config U8G2_I2C_ADDRESS
+        hex "OLED Device I2C address (hex, 7bit)"
+        default 0X78
+            
+    config U8G2_I2C_PERIPH_NUM
+        int "I2C Peripheral number"
+        default 0
+            
+    config U8G2_I2C_SPEED
+        int "I2C clock frequency"
+        default 400000
+        depends on U8G2_INIT_I2C_ENABLE
+
+    config U8G2_I2C_SCL
+        int "I2C SCL GPIO pin number"
+        default 2
+        depends on U8G2_INIT_I2C_ENABLE
+
+    config U8G2_I2C_SDA
+        int "I2C SDA GPIO pin number"
+        default 3
+        depends on U8G2_INIT_I2C_ENABLE
+
+endmenu

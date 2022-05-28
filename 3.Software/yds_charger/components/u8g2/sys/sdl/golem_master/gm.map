@@ -1,0 +1,108 @@
+#
+# gm.map
+#
+# Syntax:
+# 	'hash' introduces a comment
+#	tile <ascii> <mapto> <top> <right> <bottom> <left>
+#		map the <ascii> code to the specified <mapto> code, if the other for tiles match
+#		If one of the other four tiles is 0, then ignore this tile (wildcard)
+#	map <name> <width> <height>
+#		Create a map with the given name and size. this must be followed by :
+#	endmap
+#		Finish the current map
+#
+tile 32 32	# map space to space
+tile '+ $80 0 '- '| 0
+tile '+ $80 0 '- '+ 0
+tile '+ $80 0 '+ '| 0
+tile '+ $80 0 '+ '+ 0
+
+tile '+ $81 0 0 '| '-
+tile '+ $81 0 0 '+ '-
+tile '+ $81 0 0 '| '+
+tile '+ $81 0 0 '+ '+
+
+tile '+ $82 '| '- 0 0
+tile '+ $82 '+ '- 0 0
+tile '+ $82 '| '+ 0 0
+tile '+ $82 '+ '+ 0 0
+
+tile '+ $83 '| 0 0 '-
+tile '+ $83 '+ 0 0 '-
+tile '+ $83 '| 0 0 '+
+tile '+ $83 '+ 0 0 '+
+
+tile '+ $84 '| '- '| 0
+tile '+ $84 '+ '- '| 0
+tile '+ $84 '| '+ '| 0
+tile '+ $84 '+ '+ '| 0
+tile '+ $84 '| '- '+ 0
+tile '+ $84 '+ '- '+ 0
+tile '+ $84 '| '+ '+ 0
+tile '+ $84 '+ '+ '+ 0
+
+
+tile '+ $85 '| 0 '| '-
+tile '+ $85 '+ 0 '| '-
+tile '+ $85 '| 0 '+ '-
+tile '+ $85 '+ 0 '+ '-
+tile '+ $85 '| 0 '| '+
+tile '+ $85 '+ 0 '| '+
+tile '+ $85 '| 0 '+ '+
+tile '+ $85 '+ 0 '+ '+
+
+tile '+ $86 0 '- '| '-
+tile '+ $86 0 '+ '| '-
+tile '+ $86 0 '- '+ '-
+tile '+ $86 0 '+ '+ '-
+tile '+ $86 0 '- '| '+
+tile '+ $86 0 '+ '| '+
+tile '+ $86 0 '- '+ '+
+tile '+ $86 0 '+ '+ '+
+
+tile '+ $87 '| '- 0 '-
+tile '+ $87 '+ '- 0 '-
+tile '+ $87 '| '+ 0 '-
+tile '+ $87 '+ '+ 0 '-
+tile '+ $87 '| '- 0 '+
+tile '+ $87 '+ '- 0 '+
+tile '+ $87 '| '+ 0 '+
+tile '+ $87 '+ '+ 0 '+
+
+tile '+ $88 '| '- '| '-
+tile '+ $88 '+ '- '| '-
+tile '+ $88 '| '+ '| '-
+tile '+ $88 '+ '+ '| '-
+tile '+ $88 '| '- '+ '-
+tile '+ $88 '+ '- '+ '-
+tile '+ $88 '| '+ '+ '-
+tile '+ $88 '+ '+ '+ '-
+tile '+ $88 '| '- '| '+
+tile '+ $88 '+ '- '| '+
+tile '+ $88 '| '+ '| '+
+tile '+ $88 '+ '+ '| '+
+tile '+ $88 '| '- '+ '+
+tile '+ $88 '+ '- '+ '+
+tile '+ $88 '| '+ '+ '+
+tile '+ $88 '+ '+ '+ '+
+
+
+tile '| $7e 0 0 '| 0
+tile '| $7e 0 0 '+ 0
+tile '| $7f 0 0 0 0
+tile '- $7d 0 0 0 0 
+
+tile 'S $54
+tile 'k $a0
+map first 12 12
+:+---+  +---+
+:|   |  |   |
+:+-+ +--+ | |
+:  |    +-+ |
+:  |    |   |
+:  |        |
+:  +-+ -----+
+:    |    Sk|
+:    +------+
+endmap
+

@@ -1,0 +1,7 @@
+version: "1.1.0-alpha"
+description: C driver, based on RMT peripheral, for WS2812 and SK6812 smart RGB diodes
+
+dependencies:
+  # Required IDF version
+  idf:
+    version: ">=4.0"

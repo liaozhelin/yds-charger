@@ -1,0 +1,291 @@
+
+STM32L0	Cortex-M0/M0+
+  STM32L011	access line 2K RAM	2x Timer
+  STM32L031	access line 8K RAM	3x Timer
+  
+  STM32L0x1	access line
+    STM32L0x1K	access line, 32 Pins (LQFP)
+    STM32L0x1F	access line, 20 Pins (TSSOP20)
+      STM32L0x1F3		8KB Flash
+      STM32L0x1F4		16KB Flash
+	STM32L011F4P6
+      STM32L0x1F6		32KB Flash
+      
+  STM32L0x2	USB+DAC
+STM32L1	Cortex-M3
+STM32L4	Cortex-M4
+
+http://www.st.com/en/microcontrollers/stm32l031f6.html
+
+=========
+
+http://www.st.com/en/embedded-software/stm32cube-embedded-software.html
+
+zip file: ~/Downloads/en.stm32cubel0.zip
+
+this contains the lib, 
+STM32Cube_FW_L0_V1.8.0/Drivers/STM32L0xx_HAL_Driver
+
+however the lib requires a config file.
+example is here:
+STM32Cube_FW_L0_V1.8.0/Projects/STM32L011K4-Nucleo/Examples/GPIO/GPIO_IOToggle/Inc
+
+startup code (.s files)
+STM32Cube_FW_L0_V1.8.0/Drivers/CMSIS/Device/ST/STM32L0xx/Source/Templates/gcc
+
+register definitions:
+STM32Cube_FW_L0_V1.8.0/Drivers/CMSIS/Device/ST/STM32L0xx/Include
+
+STM32L031xNyM
+3: RAM size? 8KB
+x: K=32 pins, F=20 pins
+N: 4=16KB, 6=32KB
+y: T=LQFP? 
+M: temperature range
+
+STM32L031F6P6	TSSOP20, 32K Flash --> available
+STM32L052K8T6	LQFP32, 64K Flash, USB --> available
+
+
+
+
+--> ld file for example here:
+
+./STM32Cube_FW_L0_V1.8.0/Projects/STM32L031K6-Nucleo/Templates_LL/SW4STM32/STM32L031K6_NUCLEO/STM32L031K6Tx_FLASH.ld
+however newly created and derived from nokeep.ld script
+
+
+
+library/hal/CMSIS
+  kchmviewer STM32Cube_FW_L0_V1.8.0/Drivers/STM32L0xx_HAL_Driver/STM32L073xx_User_Manual.chm
+    doxygen seiten der hal treiber.... leider wie üblich nicht besonders übersichtlich
+
+
+Code					Source
+startup_stm32l031xx.s		STM32Cube_FW_L0_V1.8.0/Drivers/CMSIS/Device/ST/STM32L0xx/Source/Templates/gcc
+	startup code, which will also call SystemInit and main()
+system_stm32l0xx.c			STM32Cube_FW_L0_V1.8.0/Drivers/CMSIS/Device/ST/STM32L0xx/Source/Templates
+	Contains the SystemInit() and SystemCoreClockUpdate() function.
+	
+system_stm32l0xx.h			STM32Cube_FW_L0_V1.8.0/Drivers/CMSIS/Device/ST/STM32L0xx/Include
+	Contains the global defs for system_stm32l0xx.c. It is placed in the common/inc
+	
+stm32l0xx/inc				various include files copied from
+      STM32Cube_FW_L0_V1.8.0/Drivers/CMSIS/Device/ST/STM32L0xx/Include/
+      STM32Cube_FW_L0_V1.8.0/Drivers/CMSIS/Include/
+	
+Documentation
+PM0223	STM32L0 Series Cortex ® -M0+ programming manual 	DM01004451.pdf	110 pages
+RM0377	STM32L0x1 Reference manual						DM01008282.pdf	882 pages
+  - Section 3.3.2: BOOT0 Pin (0=user, 1=bootloader)	
+STM32L031x4 STM32L031x6 Datasheet						DM00140359.pdf	118 pages
+AN2606	Bootloader description							CD00167594.pdf
+  USART2 configuration is: 8-bits, even parity and 1 Stop bit, RX/TX on PA9/PA10 or PA2/PA3
+  Die doku ist da nicht ganz eindeutig. PA10 und PA3 sind die UART2_RX pins, PA9  und PA2 die TX
+AN3155	USART protocol used in the STM32™ bootloader
+
+External tools (Ubuntu Linux)
+arm-none-eabi-gcc	sudo apt install gcc-arm-none-eabi
+stm32flash		sudo apt install stm32flash
+  
+
+stm32flash: There seems to be a problem with ch340/ch341 devices
+  https://sourceforge.net/p/stm32flash/tickets/81/?limit=25&page=1#7106
+  also mentioned here:
+    https://sourceforge.net/p/stm32flash/wiki/Hints/
+  I think this got solved in the kernel by a commit on Oct 24, 2016:
+    https://github.com/torvalds/linux/commit/ba781bdf86621b71aa79a1ac0ad584f1e8aac307#diff-27cbcff3aa65aa3cda4aef10b416dd24
+    
+  modinfo ch341  -->  4.4.0-62-generic
+  https://github.com/torvalds/linux/blob/v4.4/drivers/usb/serial/ch341.c --> Tag 4.4
+  looks like this moved to the kernel with the 4.10 tag
+  Ubuntu kernel version ermitteln: cat /proc/version
+  Ubuntu 17.04 may use 4.10 and might be there at 13 Apr 2017
+  ok, i will be using a cp21xx driver here...
+  Conclution: Support of CH340 usb-serial converter for ubuntu linux will be there with Ubunutz 17.04
+
+===========
+
+steampunk
+
+http://www.rattlebrained.org/articles/diy-pvc-train-whistle
+
+
+Kupferrohre:
+https://www.bengs-modellbau.de/zubehoerteile/flasche-und-fittings/
+90 grad fitting
+Auch nicht schlecht:
+https://knupfer.info/shop/index.php/deutsch/profile-rohre/kupferrohr.html
+
+kupferrohrflöte, obertonflöte
+http://www.spiritsoundart.de/shop/obertonfloeten-aus-kupfer/
+http://www.maxbrumbergflutes.eu/floeten/obertonfloeten/
+
+englisch
+https://en.wikipedia.org/wiki/Overtone_flute
+
+Didgeridoo
+
+===========
+
+TODO, 17 Apr 2017
+- Pullups an die buttons und die tamper pullups deaktivieren. 
+  Grund: Ansonsten kann man nicht mehr per reset booten und flashen
+  --> DONE (es gibt einen menü eintrag)
+- Es wird ja ständig das power interface sowie RTC activiert und deaktiviert.
+  Das sollte man vermutlich dauerhaft aktiviert lassen.  --> DONE
+
+9. Mai 17
+Irgendwie funktioniert das warm startup nicht. Der uC stürzt ab, wenn man
+das u8x8_InitDisplay() nicht ausführt, aber warum? Was habe ich vergessen?
+--> pointer fehler
+
+todo
+- load/save values to backup register --> DONE
+- configuration of the standby delay value --> DONE
+- display off option for standby --> DONE
+- if the alarm is confirmed within the same minute, then the alarm will apear again.
+    --> Fixed (checked for the is_equal flag)
+- Auto detect für den externen oszillator oder quarz
+
+============
+Holzbearbeitung
+
+redwood 15x60x60 (dictum.com)
+Linse 35,5mm (astromedia.de, OM7a)
+32mm Holzbohrer
+
+Fach für 2xAAA Halterung:
+Von unten mit 32mm Holzbohrer aufbohren: Achtung nicht durchbohren
+Dann mit 4x 14mm Holzbohrer weiterbohren (an den Rändern des vorherigen Lochs).
+Achtung nicht durchbohren
+
+Bedienknöpfe:
+Löcher mit dem Durchmesser der Knöpfe bohren (Rote Buttons hatten 12mm)
+
+Display und uC Gehäuse:
+Von unten mit 32mm Holzbohrer aufbohren: Achtung nicht durchbohren
+Dann mit einem kleineren Bohrer (6mm?) entlang der Front mehrere Löcher Bohren
+Auch hier: Nicht durchbohren
+Mit der Stichsäge Die Bohrungen weiter aufsägen.
+
+Display Front:
+Löcher bohren, mit der Stichsäge aufbohren, dann mit der Feile quadratisch machen.
+
+Display Abdeckung
+M30: Aussendurchmesser 56mm, Innen31
+
+Derzeit: Aussen 52, Innen 32
+https://www.befestigungsfuchs.de/Befestigungstechnik/Unterlegscheiben/DIN-125/Form-A/50-Unterlegscheiben-DIN-125-Form-A-Kunststoff-Polyamid-fuer-M30?action_ms=1
+50 Stück, 13€ + 5€ Versand
+
+Buchescheiben 50mm, aber ca. 15€ Versand und Mindermengenzuschlag
+http://www.rundstab.de/product_info.php?info=p2934_buchenscheiben-50-mm.html&no_boost=1
+10 Stück 5€ + 15€ Versand
+
+Buchescheiben 50mm, aber sortiert im set mit 35 anderen
+http://www.rakuten.de/produkt/holzscheiben-35-stueck-15-5-cm-349163036.html
+2 Stück für 2,60 +5€ Versand
+
+Im Englischen heisst das wohl "flat washer"
+--> Bei E-Bay bestellt Innen 33mm aussen 42mm... naja mal sehen wie das mit der Linse wird.
+
+===============
+steampunk t-shirts
+--> https://www.redbubble.com
+https://www.redbubble.com/people/grimdork/works/14821398-steampunk-gears?grid_pos=88&p=t-shirt&rbs=8ebda8e5-4144-46a9-ac4a-844d84359fa5&ref=products_grid&style=mens
+https://www.redbubble.com/people/melaniem68/works/8073180-steampunk-play?grid_pos=207&p=t-shirt&rbs=562932c0-5414-48ae-a967-336e2ea35256&ref=products_grid&style=mens
+https://www.redbubble.com/people/amadeus-ch/works/11341440-mechanical-heart-steampunk?grid_pos=244&p=t-shirt&rbs=562932c0-5414-48ae-a967-336e2ea35256&ref=products_grid&style=mens
+https://www.redbubble.com/people/interarte/works/7300455-steampunk?p=t-shirt&style=mens&body_color=black&print_location=front
+https://www.redbubble.com/people/reubsaet/works/23847501-steampunk-art?grid_pos=384&p=mens-graphic-t-shirt&rbs=d5842963-a112-4003-a60e-06ecd20a4e42&ref=products_grid
+FITTI20
+
+---------------
+todo
+- uptime counter	--> done
+- bessere voltanzeige --> nicht umgesetzt, aber optional
+- winterzeit: Muss direkt auf der hardware gemacht werden, alles andere ist zu kompliziert
+
+---------------
+
+extras
+obertonflöte: schwierig, vor allem wegen der luft
+
+fliehkraftregler (governor): kann man wohl praktisch nicht kaufen
+http://www.hilltop-cottage.info/blogs/adam/model-watt-governor-cad-plans-and-construction-notes/
+http://www.stuartmodels.com/products/fittings--tools---accessories/governor---spring-belt  ... teuer
+Alles zu teuer.
+Glocke mit servo dran...
+
+
+---------------
+
+A) short description of the STM32L0 RTC
+- date/time register
+- CR register with special DST features (BKP, SUB1H and ADD1H flags)
+- two step write protection:
+    PWR->CR |= PWR_CR_DBP;
+    
+    RTC->WPR = 0x0ca;					/* disable RTC write protection */
+    RTC->WPR = 0x053;
+  B) algorithm
+     - basic idea
+    - special case for winter time change (double hour)
+  C) Date calculation
+  D) Code
+  
+
+---------------
+Bauteile Steampunk Clock mit MKR Zero
+
+Gold-Spr�hlack
+
+Kupferrohre 3x Durchmesser 12mm, L�nge 40mm, Meterware Baumarkt
+Kupferrohre 2x L-St�ck, 12mm, Baumarkt
+Steckernetzteil 5V, 2.1mm Hohlstecker (z.B. Reichelt SNT 1000 5V)
+Einbaukupplung, 2.0mm Stift (z.B. Reichelt LUM NEBJ 21C)
+Buzzer, Durchmesser 10mm
+--> Achtung: Den CAD Plan noch ändern.
+
+
+---------------
+Bugs
+
+Man scheint die zeit nicht immer vorzeitig ausschalten zu können. Warum?
+Erneutes eingeben der alarmzeit behebt das problem.
+Manchmal erscheit die nächste zeit gar nicht im display. Auch hier
+behebt das erneute eingeben der alarmzeit das problem.
+Es sieht so aus: man schaltet die zeit vorzeitig ab, dann erscheint das menü
+für den übernächsten tag nicht (für den folgenden tag hatte man es ja abgeschaltet).
+
+
+17. Sep 2017: einen bug in uint32_t get_u32_by_alarm_data(gui_alarm_t *alarm) behoben
+
+
+
+---------------
+MKR Zero
+
+Processor: SAMD21G18
+
+---------------
+Ausgabe, ob gerade winter oder sommerzeit aktiv ist.
+
+  ========================0
+  
+  https://stackoverflow.com/questions/50151897/arm-gcc-conflicting-cpu-architectures
+  
+  ARM GCC: Conflicting CPU architectures
+  
+
+    So you should remove gcc-arm-none-eabi and binutils-arm-none-eabi:
+
+    sudo apt-get remove binutils-arm-none-eabi
+    sudo apt-get remove gcc-arm-none-eabi
+
+    Now install from the PPA:
+
+    sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa
+    sudo apt-get update
+    sudo apt-get install gcc-arm-embedded
+

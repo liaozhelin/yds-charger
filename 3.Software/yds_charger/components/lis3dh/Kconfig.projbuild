@@ -1,0 +1,36 @@
+menu "LIS3DH Component Config"
+    choice U8G2_INIT_I2C_CONTROL
+        prompt "Select ENABLE I2C interface (When there are not only one drivers on lines)"
+        default LIS3DH_INIT_I2C_ENABLE
+
+        config LIS3DH_INIT_I2C_ENABLE
+            bool "ENABLE"
+        config LIS3DH_INIT_I2C_DISABLE
+            bool "DISABLE"
+    endchoice
+
+    config LIS3DH_I2C_ADDRESS
+        hex "LIS3DH Device I2C address (hex, 7bit)"
+        default 0x19
+
+    config LIS3DH_I2C_PERIPH_NUM
+        int "I2C Peripheral number"
+        default 0
+        depends on LIS3DH_INIT_I2C_ENABLE
+
+    config LIS3DH_I2C_SDA_PIN
+        int "I2C SDA GPIO pin number"
+        default 25
+        depends on LIS3DH_INIT_I2C_ENABLE
+    
+    config LIS3DH_I2C_SCL_PIN
+        int "I2C SCL GPIO pin number"
+        default 26
+        depends on LIS3DH_INIT_I2C_ENABLE
+
+    config LIS3DH_I2C_SPEED
+        int "I2C clock frequency"
+        default 400000
+        depends on LIS3DH_INIT_I2C_ENABLE
+    
+endmenu

@@ -5,6 +5,8 @@
 > 视频介绍：[【开源】如何自制一个全能桌面充电站？](https://www.bilibili.com/video/BV1X94y1U7av/)
 >
 > 如果觉得视频还可以的话，留下一键三连哦 ( ˊ•̥▵•)੭₎₎
+>
+> 本项目欢迎复刻，禁止商用！！
 
 ![5E3306F0C8ED8A1241D5FD975B7F77DC](https://raw.githubusercontent.com/liaozhelin/picgo/master/5E3306F0C8ED8A1241D5FD975B7F77DC.png)
 
@@ -16,6 +18,8 @@
 - 已添加烧录软件,bootloader固件以及app固件
 - 已添加结构设计文件夹
 - 已添加手册文件夹
+- 已添加 esp32c3 usb cdc/jtag驱动文件
+- 已添加源码工程文件夹，希望大佬们可以帮忙改进，代码里有什么错误以及疑问都可以提交issue交流，当然能帮我完善功能就更好了😊
 
 ## 项目介绍：
 
