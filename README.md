@@ -84,15 +84,15 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 
 ​	本项目不需要烧录器/下载器，只需要你有一个USB线，但是需要自己焊接一个降压电路将USB口的5V转到3.3V（或者不从排针3.3V处供电，直接通过DC口供电）,**一定不要把5V接到板子上的3.3V处，必烧ESP32**，我是使用了一个洞洞板+AMS1117焊接的简单下载器：
 
-<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000844883.png" alt="image-20220528000844883" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000844883.png" alt="image-20220528000844883" style="zoom: 25%;" />
 
 ​	固件位置在 Fireware/bin 中，软件打开后将设备连接到电脑
 
-<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000432670.png" alt="image-20220528000432670" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000432670.png" alt="image-20220528000432670" style="zoom: 50%;" />
 
 ​	按照下面的图片设置好软件，点击下载应该就可以下载固件了（如果出现连接错误可以将上板后面的拨动开关向左拨动不松，然后再上电，就会进Boot模式）
 
-<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528003317226.png" alt="image-20220528003317226" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528003317226.png" alt="image-20220528003317226" style="zoom: 25%;" />
 
 ​	ESP32 采用了 APP+OTA1+OTA2 的乒乓更新分区（这样就算更新到一半断电断网也不会变砖），可以实现远程更新，首次烧录完后续盖上盖子后，之后就可以使用无线更新了。
 
