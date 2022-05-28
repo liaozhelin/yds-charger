@@ -10,6 +10,14 @@
 
 ![5E3306F0C8ED8A1241D5FD975B7F77DC](https://raw.githubusercontent.com/liaozhelin/picgo/master/5E3306F0C8ED8A1241D5FD975B7F77DC.png)
 
+**仓库目录说明**
+
+1. Hardware：【上层板/下层板/前面板/后面板 】   硬件gerber文件/原理图源文件/原理图PDF文件/坐标文件/BOM文件
+2. Firmware：【 ESP32C3FN4 的固件以及工具 】 固件/驱动/下载烧录软件
+3. Software： 【 软件工程源码 】 esp-idf-4.4 版本开发环境
+4. Structure： 【 整机结构文件 】 包含电路板及外壳装配文件，软件版本Soliworks2022
+5. Documents： 【 项目所用到的文档手册等 】 部分手册，有些手册是厂家不让流传的没有上传
+
 **资料说明 （更新日期22-5-28）**
 
 - 已添加gerber文件，包含上层版，下层板，前面板，后面板，可直接打样（上层板若审核不通过备注断板不补即可）
