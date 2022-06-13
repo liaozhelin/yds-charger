@@ -10,7 +10,7 @@
 >
 > 整体成本（纯硬件）在50元左右，目前没有贵的离谱芯片，选用的芯片基本都是国产使用量较高的
 >
-> 有问题请在`issues`中
+> 有问题请在`issues`中提交，其他平台的消息不一定看得到
 
 ![5E3306F0C8ED8A1241D5FD975B7F77DC](https://raw.githubusercontent.com/liaozhelin/picgo/master/5E3306F0C8ED8A1241D5FD975B7F77DC.png)
 
