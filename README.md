@@ -92,8 +92,8 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 
 ​	本项目不需要烧录器/下载器，只需要你有一个USB线，但是需要自己焊接一个降压电路将USB口的5V转到3.3V（或者不从排针3.3V处供电，直接通过DC口供电）,**一定不要把5V接到板子上的3.3V处，必烧ESP32**，我是使用了一个洞洞板+AMS1117焊接的简单下载器：
 
-| <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000844883.png" alt="image-20220528000844883" style="zoom: 15%;" /> |      |
-| ------------------------------------------------------------ | ---- |
+| <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000844883.png" alt="image-20220528000844883" style="zoom: 33%;" /> | <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613145939279.png" alt="image-20220613145939279" style="zoom:50%;" /> |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
 
 1. 合并固件位置在 `Fireware/bin/target.bin` ，独立固件位置在 `Software/yds_charger` 中，推荐不打算自己后续开发的使用合并bin下载方式。
 
