@@ -2,7 +2,7 @@
  * @Author: [LiaoZhelin]
  * @Date: 2022-04-03 10:05:08
  * @LastEditors: [LiaoZhelin]
- * @LastEditTime: 2022-05-12 18:39:00
+ * @LastEditTime: 2022-06-13 20:23:52
  * @Description:
  */
 // System:
@@ -79,6 +79,9 @@ void NVS_Init(void){
 
 void ALL_Init(void){
   //Initization
+  nvs_handle_t wificonfig_handle;
+  uint8_t s_WifiConfigVal;
+
   u8g2_Init();// Init I2C
   oledInitMessageTask(1,"");
   NVS_Init();
@@ -95,14 +98,27 @@ void ALL_Init(void){
   LIS3DH_Init();// No init I2C
   oledInitMessageTask(3,"OK");
   vTaskDelay(pdMS_TO_TICKS(200));
+
   oledInitMessageTask(4,"");
-  if(wifi_init_sta(0)){
-    oledInitMessageTask(4,"OK");
-    vTaskDelay(pdMS_TO_TICKS(200));
+  ESP_ERROR_CHECK(nvs_open("WifiConfigFlag",NVS_READWRITE,&wificonfig_handle));
+  nvs_get_u8(wificonfig_handle,"WifiConfigFlag",&s_WifiConfigVal);
+
+  if(s_WifiConfigVal == wifi_configed){
+    if(wifi_init_sta(0)){
+      oledInitMessageTask(4,"OK");
+      vTaskDelay(pdMS_TO_TICKS(200));
+    }
+    else{
+      oledInitMessageTask(4,"ER");
+      vTaskDelay(pdMS_TO_TICKS(2000));
+    }
   }
   else{
-    oledInitMessageTask(4,"ER");
-    vTaskDelay(pdMS_TO_TICKS(2000));
+    oledInitMessageTask(4,"NO");
+    ESP_LOGI(TAG,"No Config Wifi");
+    vTaskDelay(pdMS_TO_TICKS(200));
+    
+    nvs_close(wificonfig_handle);
   }
   //OTA_Init(); // Init Wifi
   

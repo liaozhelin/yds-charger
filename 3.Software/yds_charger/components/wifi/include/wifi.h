@@ -2,7 +2,7 @@
  * @Author: [LiaoZhelin]
  * @Date: 2022-02-10 16:05:01
  * @LastEditors: [LiaoZhelin]
- * @LastEditTime: 2022-04-03 10:12:22
+ * @LastEditTime: 2022-06-13 20:11:41
  * @Description: 
  */
 #ifndef _WIFI_H_
@@ -19,6 +19,11 @@ extern "C" {
 #define EXAMPLE_ESP_MAXIMUM_RETRY  CONFIG_ESP_MAXIMUM_RETRY
 
 uint8_t wifi_init_sta(uint8_t mode);
+
+typedef enum{
+    wifi_unconfiged = 0,
+    wifi_configed,
+}Wifi_Connected_t;
 
 #ifdef __cplusplus
 }
