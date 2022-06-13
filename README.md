@@ -118,9 +118,9 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 
 |                             图1                              |                             图2                              |                             图3                              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613220553277.png) | ![image-20220613220624024](C:/Users/zhang/AppData/Roaming/Typora/typora-user-images/image-20220613220624024.png) | ![image-20220613220700508](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613220700508.png) |
+| ![](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613220553277.png) | ![image-20220613221404829](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613221404829.png) | ![image-20220613220700508](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613220700508.png) |
 
-​	ESP32 采用了 APP+OTA1+OTA2 的乒乓更新分区（这样就算更新到一半断电断网也不会变砖），可以实现远程更新，首次烧录完后续盖上盖子后，之后就可以使用无线更新了。
+​	OTA采用了 APP+OTA1+OTA2 的乒乓式更新分区（这样就算更新到一半断电断网也不会变砖），首次烧录完后续盖上盖子后，后续就可以使用无线更新了。
 
 ## 三、IDF开发
 
