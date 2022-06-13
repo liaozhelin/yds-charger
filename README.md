@@ -9,16 +9,18 @@
 > 本项目欢迎复刻，禁止商用！！
 >
 > 整体成本（纯硬件）在50元左右，目前没有贵的离谱芯片，选用的芯片基本都是国产使用量较高的
+>
+> 有问题请在`issues`中
 
 ![5E3306F0C8ED8A1241D5FD975B7F77DC](https://raw.githubusercontent.com/liaozhelin/picgo/master/5E3306F0C8ED8A1241D5FD975B7F77DC.png)
 
 **仓库目录说明**
 
-1. Hardware：【上层板/下层板/前面板/后面板 】gerber文件/原理图源文件/原理图PDF文件/坐标文件/BOM文件
-2. Firmware：【 ESP32C3FN4 的固件以及工具 】固件/驱动/下载烧录软件
-3. Software： 【 软件工程源码 】esp-idf-4.4 版本开发环境
-4. Structure： 【 整机结构文件 】包含电路板及外壳装配文件，软件版本Soliworks2022
-5. Documents： 【 项目所用到的文档手册等 】部分手册，有些手册是厂家不让流传的没有上传
+1. `Hardware`：【上层板/下层板/前面板/后面板 】gerber文件/原理图源文件/原理图PDF文件/坐标文件/BOM文件
+2. `Firmware`：【 ESP32C3FN4 的固件以及工具 】固件/驱动/下载烧录软件
+3. `Software`： 【 软件工程源码 】esp-idf-4.4 版本开发环境
+4. `Structure`： 【 整机结构文件 】包含电路板及外壳装配文件，软件版本Soliworks2022
+5. `Documents`： 【 项目所用到的文档手册等 】部分手册，有些手册是厂家不让流传的没有上传
 
 **资料说明 （更新日期22-5-30）**
 
@@ -35,15 +37,15 @@
 - 已添加器件采购指南，只做样例，若链接失效自行找类似器件替换。
 - 已添加不同丝印版本的文件，在每个板子文件夹中的others文件夹中，每一块板子都提供了3种不同的丝印版本，降低打样时候判定拆单的概率（实在不行就换其他打板公司或者换不同时间打样，基本上只要是机审就可以通过）
 
-## 项目介绍：
+## 一、项目介绍：
 
 ### 1.1 硬件选型：
 
 > 本项目的硬件购买都来自于淘宝，虽然有可能有假货，但是我没有翻车，大家可以酌情选择。
 
-- 项目控制核心采用乐鑫**ESP32C3**芯片作为控制MCU，具备Wifi和Bluetooth，价格便宜功能强大，后期可供二次开发增加特定的功能(内置4M大FLASH)。
-- C口功率级采用了智融**SW3526**的功率芯片（4.5元一片😍），该芯片内置多种快充协议，芯片内部集成功率管可以减少PCB面积，最大功率为单通道65W，本项目中设计了两路通道。
-- A口功率级采用了英集芯的**IP6525T**，该芯片内置多种快充协议，价格低廉（1元一片😍），最大功率为单通道18W，本项目中设计了两路, 设计在机身后部, 主要是给桌面上的固定设备供电, 比如台灯, 小服务器等, 可通过MOS管远程控制开关
+- 项目采用乐鑫**ESP32C3FN4**芯片作为控制MCU，具备Wifi和Bluetooth，价格便宜功能强大，可供二次开发增加许多其他功能(内置4M的FLASH)。
+- C口功率级采用了智融**SW3526**的功率芯片（目前价格4.5元一片😍），该芯片支持多种快充协议，芯片内部集成功率管，减少PCB面积，最大功率为单通道65W，本项目中设计了两组通道。
+- A口功率级采用了英集芯的**IP6525T**，价格低廉（目前价格1元一片😍），最大功率为单通道18W，本项目中设计了两路, 设计在机身后部, 主要是给桌面上的固定设备供电, 比如台灯, 小服务器等, 可通过MOS管远程控制开关
 - 交互界面显示屏采用了**0.96**寸OLED屏（尺寸刚好,至于烧屏问题后面会通过屏保解决）。
 - 输入部分设计了保护电路，具备防反接（方便车充应用）功能，反接系统不会工作。具备过流保护电路（10A），过流会熔断保险丝。具备防打火缓启动电路，可以防止上电火花。
 - 板载四路RGB指示灯以及面板，可以实现当前系统状态的快速指示。
@@ -70,7 +72,7 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 
 整体尺寸（含外壳）：50X*20X*80(mm)
 
-## 制作教程
+## 二、制作教程
 
 ### 2.1 制作注意事项
 
@@ -86,19 +88,28 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 
 > 通过Fireware/tools文件夹中的 flash_download_tool_3.9.2 工具下载
 >
-> 本项目暂时不提供源码下载以及PCB源文件，一个是资料还在整理，现在还不够规范
+> 本项目暂时不提供PCB源文件，源码已经全部开源，有需要二次开发的朋友可以自行修改
 
 ​	本项目不需要烧录器/下载器，只需要你有一个USB线，但是需要自己焊接一个降压电路将USB口的5V转到3.3V（或者不从排针3.3V处供电，直接通过DC口供电）,**一定不要把5V接到板子上的3.3V处，必烧ESP32**，我是使用了一个洞洞板+AMS1117焊接的简单下载器：
 
-<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000844883.png" alt="image-20220528000844883" style="zoom: 15%;" />
+| <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000844883.png" alt="image-20220528000844883" style="zoom: 15%;" /> |      |
+| ------------------------------------------------------------ | ---- |
 
-​	固件位置在 Fireware/bin 中，软件打开后将设备连接到电脑
+1. 合并固件位置在 `Fireware/bin/target.bin` ，独立固件位置在 `Software/yds_charger` 中，推荐不打算自己后续开发的使用合并bin下载方式。
 
-<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000432670.png" alt="image-20220528000432670" style="zoom: 30%;" />
+2.  软件打开后将设备连接到电脑，如图片`1`设置好下载模式后，点击OK。
 
-​	按照下面的图片设置好软件，点击下载应该就可以下载固件了（如果出现连接错误可以将上板后面的拨动开关向左拨动不松，然后再上电，就会进Boot模式）
+3. 【合并bin下载方式】按照下面的图片`2 `设置好软件，点击下载应该就可以下载固件了，一共需要烧录一个固件即可，地址设置0
 
-<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528003317226.png" alt="image-20220528003317226" style="zoom: 10%;" />
+4. 【独立bin下载方式】按照下面的图片`3 `设置好软件，点击下载应该就可以下载固件了,一共需要烧录四个固件，注意地址设置
+
+   > 如果出现连接错误可以将上板后面的拨动开关向左拨动不松，然后再上电，就会进Boot模式）烧录完成，断电后重新上电，应该就可以正常使用了。
+
+​	烧录完成后，重新上电复位，就可以使用了。
+
+|                              1                               |                              2                               |                              3                               |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000432670.png" alt="image-20220528000432670" style="zoom: 67%;" /> | <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613145429212.png" alt="image-20220613145429212" style="zoom:33%;" /> | <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613144244227.png" alt="image-20220613144244227" style="zoom: 33%;" /> |
 
 ​	ESP32 采用了 APP+OTA1+OTA2 的乒乓更新分区（这样就算更新到一半断电断网也不会变砖），可以实现远程更新，首次烧录完后续盖上盖子后，之后就可以使用无线更新了。
 
@@ -128,13 +139,81 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 |                            |      |                                  |
 |                            |      |                                  |
 
+## 三、IDF开发
+
+### 3.1 开发环境搭建
+
+​	IDF开发环境我是在 Windows 系统中使用 `VScode+idf拓展插件` 在Python虚拟环境中实现开发的，实际上也可以在Linux中直接搭建环境开发，或者使用`WSL+VScode远程插件` 也是可以的，可以根据自己的需要进行选择，详细的搭建步骤可以见[官网搭建流程](https://docs.espressif.com/projects/esp-idf/zh_CN/release-v4.1/get-started/index.html#get-started-get-prerequisites)：
+
+​	下面以我的`VScode+idf拓展插件` 搭建环境为例：
+
+1. 安装Vscode，这个直接下载安装即可，然后在左侧的应用市场中，搜索关键词 Espressif IDF，安装：
+
+   <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613131702897.png" alt="image-20220613131702897" style="zoom:50%;" />
+
+2. 插件安装完成后，按`F1`,在命令中找到`Configure ESP-IDF extension`选项，点击：
+
+   <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613131821004.png" alt="image-20220613131821004" style="zoom: 67%;" />
+
+3. 选择ADVANCED模式，可以详细配置一些选项：
+
+   ![image-20220613131919778](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613131919778.png)
+
+4. 依次设置软件源，IDF版本，IDF路径，IDF工具路径。软件源如果你科学就可以直接选择Github，没有科学可以选择Espressif的国内源，IDF版本这里选择`release/4.4`,其他两个可以根据自己进行设置（路径中不要出现中文或者空格），推荐使用默认路径，然后点击 `Install` 进行安装：
+
+   <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613132213211.png" style="zoom:50%;" />
+
+5. 等待ESP-IDF下载安装完成，IDF整体体积不小，具体看网速：
+
+   <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613132432305.png" alt="image-20220613132432305" style="zoom:50%;" />
+
+6. 接下来安装ESP-IDF工具，其中包含虚拟环境以及虚拟环境中用到的一些工具链，选择 `Download ESP-IDF Tools`选项，点击 `Download Tools`：
+
+   ![image-20220613133019914](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613133019914.png)
+
+7. 等待工具安装完成：
+
+   ![image-20220613133149569](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613133149569.png)
+
+8. 若出现如下页面，则安装完成，如果上述中有步骤报错，一般就是网络问题：
+
+   <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613133812483.png" alt="image-20220613133812483" style="zoom: 67%;" />
+
+### 3.2导入工程开发
+
+​	本项目的工程在 `Software/yds_charger` 下，将项目克隆到本地，主要修改项目中的.vscode文件夹，这个文件夹中的文件控制着IDF插件的功能以及Vscode本身的代码高亮提示跳转等。
+
+​	先验证安装环境是否可以正常使用，按`F1`,在命令中找到`New Project`,点击：
+
+<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613133845390.png" alt="image-20220613133845390" style="zoom:50%;" />
+
+​	根据自己喜好修改工程名，路径，板子，串口（没接上电脑就不用选），最后一个选项可以不管，点击 `Chose Template`：
+
+![image-20220613134033428](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613134033428.png)
+
+​	下拉框中选择 `ESP-IDF` ,这里可以选择一个最简单的项目测试下，`sample_project`，选择好后点击蓝色按钮生成工程，并信任文件夹中的作者并启用所有功能:
+
+<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613134236762.png" alt="image-20220613134236762" style="zoom:50%;" />
+
+​	点击工程下面框中的编译按钮，等待编译完成，若能成功生成bin文件则环境搭建成功（编译如果很慢的话，关闭Windows的病毒防护，可以极大提高编译速度）：
+
+<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613134532026.png" alt="image-20220613134532026" style="zoom:67%;" />
+
+<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613135352420.png" alt="image-20220613135352420" style="zoom:50%;" />
+
+​	验证完编译环境后，可以将示例工程中.vscode中文件复制到克隆下的工程中，或者使用 `F1` 中的添加.vscode文件命令也可以，应该包含下面四个文件：
+
+![image-20220613142504698](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613142504698.png)
+
+​	后面就可以愉快地开发了，烧录下载也一样是用下面的按钮，这里就不赘述了：
+
+<img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613142901062.png" alt="image-20220613142901062" style="zoom:67%;" />
+
 ......
 
 未完待续
 
 ......
-
-
 
 > 本项目禁止商用，仅供同好们复刻使用，在制作项目时候，请确保硬件无故障再连接设备使用（我已经使用了两个月，目前没有出过问题，手头设备不是很多，所以测试可能不是很完善，不能保证系统不存在隐藏的问题。希望大家能发现问题一起改进），对于造成高价值设备损坏以及其他连带损失的的，本人不承担任何责任哈。
 >
