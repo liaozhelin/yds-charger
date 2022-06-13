@@ -57,7 +57,7 @@
 
 输入电压：10V-32V直流 (推荐使用换下来的笔记本充电器,咸鱼便宜量大,当然更推荐24V5A台达电源,可以最大程度发挥功率)
 
-输入功率：＞80W
+输入功率：＞80W （满载144W，但是一般不会全部满载）
 
 快充参数如下：
 
@@ -102,7 +102,7 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 
 |                            烧录器                            |                        烧录器连接板子                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000844883.png" alt="image-20220528000844883" style="zoom: 33%;" /> | <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613145939279.png" alt="image-20220613145939279" style="zoom:50%;" /> |
+| ![image-20220613220723699](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613220723699.png) | ![image-20220613220739571](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613220739571.png) |
 
 1. 合并固件位置在 `Fireware/bin/target.bin` ，独立固件位置在 `Software/yds_charger` 中，推荐不打算自己后续开发的使用合并bin下载方式。
 
@@ -118,7 +118,7 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 
 |                             图1                              |                             图2                              |                             图3                              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528000432670.png" alt="image-20220528000432670" style="zoom: 67%;" /> | <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613145429212.png" alt="image-20220613145429212" style="zoom:33%;" /> | <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613144244227.png" alt="image-20220613144244227" style="zoom: 33%;" /> |
+| ![](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613220553277.png) | ![image-20220613220624024](C:/Users/zhang/AppData/Roaming/Typora/typora-user-images/image-20220613220624024.png) | ![image-20220613220700508](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613220700508.png) |
 
 ​	ESP32 采用了 APP+OTA1+OTA2 的乒乓更新分区（这样就算更新到一半断电断网也不会变砖），可以实现远程更新，首次烧录完后续盖上盖子后，之后就可以使用无线更新了。
 
@@ -222,7 +222,7 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 
 ......
 
-未完待续
+未完待续，项目不保熟，你贤惠我还贤惠呢🙌有啥问题随时提issues，已经有人复刻成功了
 
 ......
 
