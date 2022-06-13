@@ -2,7 +2,7 @@
  * @Author: [LiaoZhelin]
  * @Date: 2022-02-10 16:05:01
  * @LastEditors: [LiaoZhelin]
- * @LastEditTime: 2022-06-13 20:29:13
+ * @LastEditTime: 2022-06-13 20:45:45
  * @Description: wifi_bsp
  */
 /* WiFi station Example
@@ -212,15 +212,16 @@ uint8_t wifi_init_sta(uint8_t mode)
         esp_netif_init();
         esp_event_loop_create_default();
         sta_netif = esp_netif_create_default_wifi_sta();
-        assert(sta_netif);
+        //assert(sta_netif);
         wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
         esp_wifi_init(&cfg);
         
-        esp_wifi_disconnect();
-        ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL));
-        ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &event_handler, NULL));
-        ESP_ERROR_CHECK(esp_event_handler_register(SC_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL));
-        ESP_ERROR_CHECK(esp_wifi_start());
+        //esp_wifi_disconnect();
+        esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL);
+        esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &event_handler, NULL);
+        esp_event_handler_register(SC_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL);
+        esp_wifi_set_mode(WIFI_MODE_STA);
+        esp_wifi_start();
         xTaskCreate(smartconfig_example_task, "smartconfig_example_task", 4096, NULL, 3, NULL); //开始配网
         bits = xEventGroupWaitBits(s_wifi_event_group,
                                    ESPTOUCH_DONE_BIT,
