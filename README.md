@@ -234,6 +234,11 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 >
 > 工作环境：0℃ - 50摄氏度
 
+复刻成功的老哥们的成品：
+
+| ![image-20220613225910704](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613225910704.png) |
+| ------------------------------------------------------------ |
+
 纪念一下开发过程中的炮灰小弟们，第一代和第三代（总共迭代了5版本，其中有2代搬板拆了，剩下这两个完好的）：
 
 <img src="https://raw.githubusercontent.com/liaozhelin/picgo/master/image-20220528181253005.png" alt="image-20220528181253005" style="zoom:50%;" />
