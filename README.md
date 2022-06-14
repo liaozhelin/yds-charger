@@ -235,6 +235,11 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 | ![image-20220613232210129](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613232210129.png) | ![image-20220613232045957](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613232045957.png) | ![image-20220613232144704](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613232144704.png) | ![image-20220613232153162](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220613232153162.png) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 
+`2022-6-14`
+
+| ![image-20220614193137566](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220614193137566.png) | ![image-20220614193200867](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220614193200867.png) | ![image-20220614193233589](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220614193233589.png) | ![image-20220614193340791](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220614193340791.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+
 ......
 
 未完待续，项目不保熟，你贤惠我还贤惠呢🙌有啥问题随时提issues，已经有人复刻成功了
