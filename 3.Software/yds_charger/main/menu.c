@@ -2,7 +2,7 @@
  * @Author: [LiaoZhelin]
  * @Date: 2022-04-29 20:32:29
  * @LastEditors: [LiaoZhelin]
- * @LastEditTime: 2022-06-14 13:55:43
+ * @LastEditTime: 2022-06-14 14:06:11
  * @Description:
  */
 #include <time.h>
@@ -400,7 +400,7 @@ static void oledWeatherSurface(void)
 static void oledClockSurface(void){
   time_t now;
   struct tm timeinfo;
-  char buf[20] = {0};
+  char buf[64] = {0};
 
   u8g2_ClearBuffer(&u8g2);
   u8g2_SetFont(&u8g2, u8g2_font_wqy13_t_gb2312);
@@ -408,10 +408,13 @@ static void oledClockSurface(void){
   u8g2_SetFont(&u8g2, u8g2_font_helvB10_tr);
   time(&now);
   localtime_r(&now, &timeinfo);
-  sprintf(buf,"%d",timeinfo.tm_sec);
-  u8g2_DrawStr(&u8g2, 0, 30, buf);
+  sprintf(buf,"%02d:%02d:%02d",timeinfo.tm_hour,timeinfo.tm_min,timeinfo.tm_sec);
+  u8g2_DrawStr(&u8g2, 0, 32, buf);
+  sprintf(buf,"%d/%d/%d",timeinfo.tm_year,timeinfo.tm_mon,timeinfo.tm_mday);
+  u8g2_DrawStr(&u8g2, 0, 48, buf);
+  strftime(buf,sizeof(timeinfo),"%c",&timeinfo);
+  u8g2_DrawStr(&u8g2, 0, 64, buf);
   u8g2_SendBuffer(&u8g2);
-  
 }
 
 static void oledSettingSurface(void)
