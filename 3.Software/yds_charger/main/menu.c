@@ -2,7 +2,7 @@
  * @Author: [LiaoZhelin]
  * @Date: 2022-04-29 20:32:29
  * @LastEditors: [LiaoZhelin]
- * @LastEditTime: 2022-06-13 20:42:21
+ * @LastEditTime: 2022-06-14 10:48:54
  * @Description:
  */
 #include "menu.h"
@@ -391,7 +391,13 @@ static void oledWeatherSurface(void)
   u8g2_ClearBuffer(&u8g2);
   u8g2_SetFont(&u8g2, u8g2_font_wqy13_t_gb2312);
   u8g2_DrawUTF8(&u8g2, 40, 15, "气象站");
-  // u8g2_DrawRFrame(&u8g2, 20, 20, 20, 40, 3);
+  u8g2_SendBuffer(&u8g2);
+}
+
+static void oledClockSurface(void){
+  u8g2_ClearBuffer(&u8g2);
+  u8g2_SetFont(&u8g2, u8g2_font_wqy13_t_gb2312);
+  u8g2_DrawUTF8(&u8g2, 40, 15, "时钟");
   u8g2_SendBuffer(&u8g2);
 }
 
@@ -538,7 +544,7 @@ void oledTask(void *pvParameters)
       oledWeatherSurface();
       break;
     case 2:
-      //预留
+      oledClockSurface();
       break;
     case 3:
       oledSettingSurface();

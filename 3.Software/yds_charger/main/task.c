@@ -2,7 +2,7 @@
  * @Author: [LiaoZhelin]
  * @Date: 2022-05-10 14:35:47
  * @LastEditors: [LiaoZhelin]
- * @LastEditTime: 2022-05-12 21:52:03
+ * @LastEditTime: 2022-06-14 11:17:14
  * @Description: 
  */
 #include "task.h"
@@ -90,7 +90,38 @@ void lis3dhTask(void *pvParameters)
     LIS3DH_ReadReg(LIS3DH_REG_OUT_Z_L,&buffer1);
     LIS3DH_ReadReg(LIS3DH_REG_OUT_Z_H,&buffer2);
     Z_V = ((buffer2<<8)|buffer1);
-    ESP_LOGI(TAG, "LIS3DH_X=%d  LIS3DH_Y=%d  LIS3DH_Z=%d",X_V,Y_V,Z_V);
+    //ESP_LOGI(TAG, "LIS3DH_X=%d  LIS3DH_Y=%d  LIS3DH_Z=%d",X_V,Y_V,Z_V);
     vTaskDelay(pdMS_TO_TICKS(40));
+  }
+}
+
+void ntpClockTask(void *pvParameters){
+  for (;;){
+    vTaskDelay(pdMS_TO_TICKS(5000));
+  }
+}
+
+void taskMonitor(void *pvParameters){
+  UBaseType_t uxHighWaterMark;
+  for (;;){
+    vTaskDelay(pdMS_TO_TICKS(1000));
+    printf("--------------------------------------------\r\n");
+    uxHighWaterMark = uxTaskGetStackHighWaterMark(adcTask_handle);
+    printf("Task: adcTask_handle stacksize=%d\r\n",uxHighWaterMark);
+
+    uxHighWaterMark = uxTaskGetStackHighWaterMark(sw35xxTask_handle);
+    printf("Task: sw35xxTask_handle stacksize=%d\r\n",uxHighWaterMark);
+
+    uxHighWaterMark = uxTaskGetStackHighWaterMark(ws28xxTask_handle);
+    printf("Task: ws28xxTask_handle stacksize=%d\r\n",uxHighWaterMark);
+
+    uxHighWaterMark = uxTaskGetStackHighWaterMark(lis3dhtask_handle);
+    printf("Task: lis3dhtask_handle stacksize=%d\r\n",uxHighWaterMark);
+
+    uxHighWaterMark = uxTaskGetStackHighWaterMark(oledTask_handle);
+    printf("Task: oledTask_handle stacksize=%d\r\n",uxHighWaterMark);
+
+    uxHighWaterMark = uxTaskGetStackHighWaterMark(ntpTask_handle);
+    printf("Task: ntpTask_handle stacksize=%d\r\n",uxHighWaterMark);
   }
 }

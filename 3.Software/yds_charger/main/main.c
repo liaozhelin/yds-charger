@@ -2,7 +2,7 @@
  * @Author: [LiaoZhelin]
  * @Date: 2022-04-03 10:05:08
  * @LastEditors: [LiaoZhelin]
- * @LastEditTime: 2022-06-13 20:23:52
+ * @LastEditTime: 2022-06-14 11:22:35
  * @Description:
  */
 // System:
@@ -123,11 +123,14 @@ void ALL_Init(void){
   //OTA_Init(); // Init Wifi
   
   //TaskCreate
-  xTaskCreate(adcTask, "adcTask", 1024 * 4, NULL, 1, &adcTask_handle);
-  xTaskCreate(sw35xxTask, "sw35xxTask", 1024 * 4, NULL, 1, &sw35xxTask_handle);
-  xTaskCreate(lis3dhTask, "lis3dhtask", 1024 * 4, NULL, 1, &lis3dhtask_handle);
-  xTaskCreate(oledTask, "oledtask", 1024 * 10, NULL, 1, &oledTask_handle);
-  xTaskCreate(ws28xxTask, "ws28xxTask", 1024*4, NULL, 0, &ws28xxTask_handle); 
+  xTaskCreate(adcTask, "adcTask", 1024, NULL, 1, &adcTask_handle);
+  xTaskCreate(sw35xxTask, "sw35xxTask", 1024, NULL, 1, &sw35xxTask_handle);
+  xTaskCreate(lis3dhTask, "lis3dhtask", 1024, NULL, 1, &lis3dhtask_handle);
+  xTaskCreate(oledTask, "oledtask", 1024 * 3, NULL, 1, &oledTask_handle);
+  xTaskCreate(ws28xxTask, "ws28xxTask", 1024, NULL, 0, &ws28xxTask_handle); 
+  xTaskCreate(ntpClockTask, "ntpClockTask", 1024, NULL, 0, &ntpTask_handle);
+  //DEBUG STACK SIZE
+  xTaskCreate(taskMonitor,"taskMonitor",1024*2,NULL,1,NULL); 
 }
 
 void app_main(void)

@@ -2,7 +2,7 @@
  * @Author: [LiaoZhelin]
  * @Date: 2022-04-07 22:32:34
  * @LastEditors: [LiaoZhelin]
- * @LastEditTime: 2022-05-12 09:33:45
+ * @LastEditTime: 2022-06-14 11:06:54
  * @Description: 
  */
 #include <stdio.h>
@@ -34,20 +34,20 @@ uint8_t SW35xxReadReg(uint8_t reg,swi2c_t port)
     setsw_i2c(port);
     sw_i2c_master_start();
     if(sw_i2c_master_write_byte(SW35XX_ADDRESS)){
-        ESP_LOGI(TAG,"find_none_sw3526!\n");
+        //ESP_LOGI(TAG,"find_none_sw3526!\n");
         return 0;
     }
     if(sw_i2c_master_write_byte(reg)){
-        ESP_LOGI(TAG,"sw3525_resister_error!\n");
+        //ESP_LOGI(TAG,"sw3525_resister_error!\n");
         return 0;
     }
     sw_i2c_master_start();
     if(sw_i2c_master_write_byte(SW35XX_ADDRESS+1)){
-        ESP_LOGI(TAG,"sw3526_read_address_error!\n");
+        //ESP_LOGI(TAG,"sw3526_read_address_error!\n");
         return 0;
     }
     if(sw_i2c_master_read_byte(&buf,1)){
-        ESP_LOGI(TAG,"sw3526_read_error!\n");
+        //ESP_LOGI(TAG,"sw3526_read_error!\n");
         return 0;
     }
     sw_i2c_master_stop();
@@ -59,15 +59,15 @@ uint8_t SW35xxWriteReg(uint8_t reg,uint8_t data,swi2c_t port){
     setsw_i2c(port);
     sw_i2c_master_start();
     if(sw_i2c_master_write_byte(SW35XX_ADDRESS)){
-        ESP_LOGI(TAG,"find_none_sw3526!\n");
+        //ESP_LOGI(TAG,"find_none_sw3526!\n");
         return 0;
     }
     if(sw_i2c_master_write_byte(reg)){
-        ESP_LOGI(TAG,"sw3525_resister_error!\n");
+        //ESP_LOGI(TAG,"sw3525_resister_error!\n");
         return 0;
     }
     if(sw_i2c_master_write_byte(data)){
-        ESP_LOGI(TAG,"sw3526_write_error!\n");
+        //ESP_LOGI(TAG,"sw3526_write_error!\n");
         return 0;
     }
     sw_i2c_master_stop();
