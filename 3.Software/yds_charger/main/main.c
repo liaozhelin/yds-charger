@@ -2,7 +2,7 @@
  * @Author: [LiaoZhelin]
  * @Date: 2022-04-03 10:05:08
  * @LastEditors: [LiaoZhelin]
- * @LastEditTime: 2022-06-14 11:22:35
+ * @LastEditTime: 2022-06-14 13:26:23
  * @Description:
  */
 // System:
@@ -31,6 +31,7 @@
 #include "menu.h"
 #include "u8g2_esp32_hal.h"
 #include "ota.h"
+#include "sntptime.h"
 
 #include "task.h"
 
@@ -38,10 +39,6 @@ static const char *TAG = "main";
 
 #define RMT_TX_CHANNEL RMT_CHANNEL_0
 
-#define HOST_IP_ADDR "192.168.1.113"
-#define PORT 777
-
-static const char *payload = "Message from ESP32 ";
 
 void GPIO_Init(void){
   //Input GPIO
@@ -107,6 +104,7 @@ void ALL_Init(void){
     if(wifi_init_sta(0)){
       oledInitMessageTask(4,"OK");
       vTaskDelay(pdMS_TO_TICKS(200));
+      SNTP_Init();
     }
     else{
       oledInitMessageTask(4,"ER");

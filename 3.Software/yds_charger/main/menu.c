@@ -2,9 +2,12 @@
  * @Author: [LiaoZhelin]
  * @Date: 2022-04-29 20:32:29
  * @LastEditors: [LiaoZhelin]
- * @LastEditTime: 2022-06-14 10:48:54
+ * @LastEditTime: 2022-06-14 13:55:43
  * @Description:
  */
+#include <time.h>
+#include <sys/time.h>
+
 #include "menu.h"
 #include "u8g2_esp32_hal.h"
 #include "adc_read.h"
@@ -395,10 +398,20 @@ static void oledWeatherSurface(void)
 }
 
 static void oledClockSurface(void){
+  time_t now;
+  struct tm timeinfo;
+  char buf[20] = {0};
+
   u8g2_ClearBuffer(&u8g2);
   u8g2_SetFont(&u8g2, u8g2_font_wqy13_t_gb2312);
   u8g2_DrawUTF8(&u8g2, 40, 15, "时钟");
+  u8g2_SetFont(&u8g2, u8g2_font_helvB10_tr);
+  time(&now);
+  localtime_r(&now, &timeinfo);
+  sprintf(buf,"%d",timeinfo.tm_sec);
+  u8g2_DrawStr(&u8g2, 0, 30, buf);
   u8g2_SendBuffer(&u8g2);
+  
 }
 
 static void oledSettingSurface(void)
