@@ -228,7 +228,7 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 >
 > 工作环境：0℃ - 50摄氏度
 
-复刻成功的大佬们的成品：
+大佬们复刻成功的成品：
 
 `2022-6-13`
 
@@ -238,6 +238,11 @@ PCB参数：47*80(mm) 厚度1.6mm 四层板
 `2022-6-14`
 
 | ![image-20220614193137566](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220614193137566.png) | ![image-20220614193200867](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220614193200867.png) | ![image-20220614193233589](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220614193233589.png) | ![image-20220614193340791](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220614193340791.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+
+`2022-6-16`
+
+| ![image-20220616132618162](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220616132618162.png) | ![image-20220616132635410](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220616132635410.png) | ![image-20220616132650768](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220616132650768.png) | ![image-20220616132715392](https://raw.githubusercontent.com/liaozhelin/picgo/master/picpath/image-20220616132715392.png) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 
 ......
