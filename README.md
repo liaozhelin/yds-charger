@@ -16,7 +16,7 @@
 >
 > * 由于本人精力有限，未能继续维护该项目固件，在此和大家说一声抱歉~，但是还是有大佬们继续帮忙维护该项目固件，大家可以关注下他们的仓库，谢谢~~
 >
->   [Zyilin98仓库]: https://github.com/Zyilin98/yds_charger?tab=readme-ov-file
+>   [Zyilin98仓库]: https://github.com/Zyilin98/yds_charger?tab=readme-ov-file	""Zyilin98仓库""
 
 ![5E3306F0C8ED8A1241D5FD975B7F77DC](https://raw.githubusercontent.com/liaozhelin/picgo/master/5E3306F0C8ED8A1241D5FD975B7F77DC.png)
 
